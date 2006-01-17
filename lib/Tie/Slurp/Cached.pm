@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 use Fcntl qw/:DEFAULT :flock :seek/;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use vars qw/$NoBlocking $WriteFirst $DontSaveAtDestroyTime/;
 

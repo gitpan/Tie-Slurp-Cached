@@ -1,5 +1,9 @@
 Revision history for Perl extension Tie::Slurp::Cached.
 
+0.02  17 Jan 2006
+  - fixed t/00_test.t to use File::Spec->tmpdir (if possible)
+  - added pod / pod coverage tests
+
 0.01  12 Jan 2006
   - Initial release.
   - forked from Tie::Slurp.

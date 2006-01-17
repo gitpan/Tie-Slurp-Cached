@@ -3,5 +3,7 @@ Makefile.PL
 MANIFEST
 README
 t/00_test.t
+t/01_pod.t
+t/01_podcoverage.t
 lib/Tie/Slurp/Cached.pm
 META.yml                                 Module meta-data (added by MakeMaker)

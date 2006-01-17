@@ -1,22 +1,32 @@
 use strict;
 use warnings;
 
-my ($exception_ok, $tests);
+use Test::More;
+
+my ($testfile, $exception_ok, $tests);
 
 # First, we check Test::Exception; half of the tests depend on it.
 # If not available, our check should be lessened.
 
 BEGIN {
+  eval "use File::Spec";
+  my $filespec_ok = $@ ? 0 : 1;
+  my $tmpdir = $filespec_ok ? File::Spec->tmpdir : '.';
+  unless (-w $tmpdir) {
+    plan skip_all => 'No writable temporary directory available';
+  }
+
+  $testfile = $filespec_ok ?
+    File::Spec->catfile($tmpdir,'TSCached.tst') : 'TSCached.tst';
+
   eval "use Test::Exception";
   $exception_ok = $@ ? 0 : 1;
   $tests        = $exception_ok ? 21 : 11;
-}
 
-use Test::More tests => $tests;
+  # Then, make sure we can use Tie::Slurp.
 
-# Then, make sure we can use Tie::Slurp.
+  plan tests => $tests;
 
-BEGIN {
   use_ok('Tie::Slurp::Cached');
 }
 
@@ -26,8 +36,6 @@ $Tie::Slurp::Cached::NoBlocking           = 1;
 $Tie::Slurp::Cached::ReadOnly::NoBlocking = 1;
 
 # Make sure we have no previous test file.
-
-my $testfile = 'TSCached.tst';
 
 unlink $testfile if -f $testfile;
 
