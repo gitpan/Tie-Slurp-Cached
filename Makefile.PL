@@ -1,11 +1,14 @@
+use strict;
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
 WriteMakefile(
     NAME              => 'Tie::Slurp::Cached',
-    VERSION_FROM      => 'lib/Tie/Slurp/Cached.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/Tie/Slurp/Cached.pm', # retrieve abstract from module
-       AUTHOR         => 'Kenichi Ishigaki <ishigaki@cpan.org>') : ()),
+    VERSION_FROM      => 'lib/Tie/Slurp/Cached.pm',
+    PREREQ_PM         => {},
+    ($] >= 5.005 ?
+      (ABSTRACT_FROM  => 'lib/Tie/Slurp/Cached.pm',
+       AUTHOR         => 'Kenichi Ishigaki <ishigaki@cpan.org>') : ()
+    ),
+    ($ExtUtils::MakeMaker::VERSION >= 6.31 ?
+      ( LICENSE => 'perl' ) : ()
+    ),
 );

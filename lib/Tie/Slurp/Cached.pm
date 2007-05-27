@@ -6,7 +6,7 @@ use warnings;
 use Carp;
 use Fcntl qw/:DEFAULT :flock :seek/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use vars qw/$NoBlocking $WriteFirst $DontSaveAtDestroyTime/;
 
@@ -234,7 +234,9 @@ L<perltie>
 
 Kenichi Ishigaki, E<lt>ishigaki@cpan.orgE<gt>
 
-=head1 COPYRIGHT
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (C) 2006 Kenichi Ishigaki.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
